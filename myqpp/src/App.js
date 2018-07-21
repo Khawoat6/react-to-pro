@@ -1,21 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Header from './Header'
+import FbButton from './FbButton'
 
 class App extends Component {
+  state = { like: 0, dislike: 0 }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    return(
+      <div>
+      <Header/>
+      <h4>Like : {this.state.like}</h4>
+      <h4>Dislike : {this.state.dislike}</h4>
+
+      < FbButton handleClick={this.onLike} caption="Like" />
+      < FbButton handleClick={this.onDisLike} caption="Dislike" />
       </div>
-    );
+    )
+  }
+
+  onLike = () = {
+    this.setState({ like: this.state.like + 1})
+  }
+
+  onDisLike = () = {
+    this.setState({ Dislike: this.state.dislike + 1})
   }
 }
 
-export default App;
+export default App
